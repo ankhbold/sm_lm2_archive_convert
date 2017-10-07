@@ -64,4 +64,5 @@ class AboutDialog(QDialog, Ui_AboutDialog):
     def on_close_button_clicked(self):
 
         print "ddddddd"
+        print "aaaaddddd"
         self.reject()
