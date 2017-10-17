@@ -275,6 +275,19 @@
     <string>Darkhan</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="compressor_button">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>485</y>
+     <width>111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>File Compressor</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

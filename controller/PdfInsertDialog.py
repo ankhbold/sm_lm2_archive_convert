@@ -2,6 +2,8 @@ __author__ = 'ankhbold'
 
 import os
 import shutil
+import zlib
+from PIL import Image
 from sqlalchemy.exc import SQLAlchemyError
 from qgis.core import *
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
@@ -40,6 +42,7 @@ class PdfInsertDialog(QDialog, Ui_PdfInsertDialog):
         file_dialog.setWindowFlags(Qt.WindowStaysOnTopHint)
         file_dialog.setModal(True)
         file_dialog.setFileMode(QFileDialog.ExistingFile)
+        file_dialog.setFilter(self.tr("Decision Files (*.img *.png *.pdf)"))
         if file_dialog.exec_():
 
             selected_file = file_dialog.selectedFiles()[0]
@@ -52,7 +55,7 @@ class PdfInsertDialog(QDialog, Ui_PdfInsertDialog):
             parcel_count = 0
             f = ""
             for file in os.listdir(file_path):
-                if file.endswith(".pdf"):
+                # if file.endswith(".pdf"):
                     name = file[:-8]
                     parcel_id = "0"+name[:-8]+"0"+name[2:]
                     if parcel_id != f:
@@ -332,7 +335,7 @@ class PdfInsertDialog(QDialog, Ui_PdfInsertDialog):
 
                     full_name = file[:-4]
                     document_type = full_name[12:]
-                    
+
                     application_count = session.query(CtApplication).filter(CtApplication.parcel == parcel_id).count()
                     if application_count == 1 and len(full_name) == 14:
                         application = session.query(CtApplication).filter(CtApplication.parcel == parcel_id).one()
@@ -348,3 +351,28 @@ class PdfInsertDialog(QDialog, Ui_PdfInsertDialog):
                             file_with_dir = app_path_folder + '/' + document_name
                             if not os.path.isfile(file_with_dir):
                                 shutil.copy2(file_path + '/' + file, app_path_folder + '/' + document_name)
+
+    @pyqtSlot()
+    def on_compressor_button_clicked(self):
+
+        session = SessionHandler().session_instance()
+
+        count = int(self.count.text())
+        self.progressBar.setMaximum(count)
+        file_path = self.decision_file_edit.text()
+
+        for file in os.listdir(file_path):
+
+            if file.endswith(".png"):
+                print file_path
+                print file
+
+                file = file_path +'/'+ file
+                archive_app_path = r'D:/'
+
+                if not os.path.isfile(archive_app_path):
+                    compImg = Image.open(file)
+                    # compress file at 50% of previous quality
+                    out_dir = 'D:/compressor/test_jpg.jpg'
+                    compImg.save(out_dir, "JPEG", quality=0)
+                    # shutil.copy2(file_path + '/' + file, app_path_folder + '/' + document_name)

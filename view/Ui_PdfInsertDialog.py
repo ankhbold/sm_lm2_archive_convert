@@ -96,6 +96,9 @@ class Ui_PdfInsertDialog(object):
         self.darkhan_button = QtGui.QPushButton(PdfInsertDialog)
         self.darkhan_button.setGeometry(QtCore.QRect(360, 485, 75, 23))
         self.darkhan_button.setObjectName(_fromUtf8("darkhan_button"))
+        self.compressor_button = QtGui.QPushButton(PdfInsertDialog)
+        self.compressor_button.setGeometry(QtCore.QRect(240, 485, 111, 23))
+        self.compressor_button.setObjectName(_fromUtf8("compressor_button"))
 
         self.retranslateUi(PdfInsertDialog)
         self.tabWidget.setCurrentIndex(0)
@@ -122,4 +125,5 @@ class Ui_PdfInsertDialog(object):
         self.export_button.setText(_translate("PdfInsertDialog", "Export from database", None))
         self.conver_version_button.setText(_translate("PdfInsertDialog", "convert new version", None))
         self.darkhan_button.setText(_translate("PdfInsertDialog", "Darkhan", None))
+        self.compressor_button.setText(_translate("PdfInsertDialog", "File Compressor", None))
 
