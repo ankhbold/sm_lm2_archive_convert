@@ -19,11 +19,11 @@
      <x>10</x>
      <y>5</y>
      <width>431</width>
-     <height>441</height>
+     <height>491</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -35,7 +35,7 @@
        <x>10</x>
        <y>125</y>
        <width>401</width>
-       <height>281</height>
+       <height>221</height>
       </rect>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
@@ -169,26 +169,171 @@
       <string>Output path</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>291</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Input path</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="import_button">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>409</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Import</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="conver_version_button">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>439</y>
+       <width>211</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>convert new version</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="export_button">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>409</y>
+       <width>113</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Export from database</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="rename_button">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>409</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rename</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="darkhan_button">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>440</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Darkhan</string>
+     </property>
+    </widget>
    </widget>
-  </widget>
-  <widget class="QPushButton" name="import_button">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>454</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Import</string>
-   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Image Compressor</string>
+    </attribute>
+    <widget class="QLineEdit" name="dir_path_edit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>31</y>
+       <width>291</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="select_dir_button">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>30</y>
+       <width>100</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Select Path</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>291</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Input path</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="compressor_button">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>430</y>
+       <width>111</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>File Compressor</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="files_twidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>401</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>200</number>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Directory</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>File Name</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
   </widget>
   <widget class="QPushButton" name="close_button">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>454</y>
+     <x>370</x>
+     <y>500</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -208,84 +353,6 @@
    </property>
    <property name="value">
     <number>0</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>39</y>
-     <width>291</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Input path</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="rename_button">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>454</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Rename</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="export_button">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>454</y>
-     <width>113</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Export from database</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="conver_version_button">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>484</y>
-     <width>211</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>convert new version</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="darkhan_button">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>485</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Darkhan</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="compressor_button">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>485</y>
-     <width>111</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>File Compressor</string>
    </property>
   </widget>
  </widget>

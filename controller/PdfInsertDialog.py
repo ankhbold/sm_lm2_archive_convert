@@ -1,6 +1,7 @@
 __author__ = 'ankhbold'
 
 import os
+from os import walk
 import shutil
 import zlib
 from PIL import Image
@@ -353,26 +354,70 @@ class PdfInsertDialog(QDialog, Ui_PdfInsertDialog):
                                 shutil.copy2(file_path + '/' + file, app_path_folder + '/' + document_name)
 
     @pyqtSlot()
+    def on_select_dir_button_clicked(self):
+
+        file_dialog = QFileDialog()
+        # file_dialog.setWindowFlags(Qt.WindowStaysOnTopHint)
+        # file_dialog.setModal(True)
+        file_dialog.setFileMode(QFileDialog.Directory)
+
+        if file_dialog.exec_():
+            selected_directory = file_dialog.getExistingDirectory()
+            print selected_directory
+            # selected_file = file_dialog.selectedFiles()[0]
+            #
+            # file_path = QFileInfo(selected_file).path()
+            self.dir_path_edit.setText(selected_directory)
+
+            for root, dirs, files in os.walk(selected_directory):
+                count = 0
+                for file in files:
+                    if file.endswith('.png'):
+                        print root
+                        print dirs
+                        print file
+                        self.files_twidget.insertRow(count)
+
+                        item = QTableWidgetItem(str(root))
+                        item.setData(Qt.UserRole, root)
+                        self.files_twidget.setItem(count, 0, item)
+
+                        item = QTableWidgetItem(str(file))
+                        item.setData(Qt.UserRole, file)
+                        self.files_twidget.setItem(count, 1, item)
+                        count += 1
+
+    @pyqtSlot()
     def on_compressor_button_clicked(self):
 
-        session = SessionHandler().session_instance()
+        selected_directory = self.dir_path_edit.text()
+        #
+        for root, dirs, files in os.walk(selected_directory):
+            count = 0
+            for file in files:
+                if file.endswith('.png'):
+                    print selected_directory
+                    print root
+                    print root.split(selected_directory)[1]
 
-        count = int(self.count.text())
-        self.progressBar.setMaximum(count)
-        file_path = self.decision_file_edit.text()
-
-        for file in os.listdir(file_path):
-
-            if file.endswith(".png"):
-                print file_path
-                print file
-
-                file = file_path +'/'+ file
-                archive_app_path = r'D:/'
-
-                if not os.path.isfile(archive_app_path):
-                    compImg = Image.open(file)
-                    # compress file at 50% of previous quality
-                    out_dir = 'D:/compressor/test_jpg.jpg'
-                    compImg.save(out_dir, "JPEG", quality=0)
-                    # shutil.copy2(file_path + '/' + file, app_path_folder + '/' + document_name)
+        # session = SessionHandler().session_instance()
+        #
+        # count = int(self.count.text())
+        # self.progressBar.setMaximum(count)
+        # file_path = self.decision_file_edit.text()
+        #
+        # for file in os.listdir(file_path):
+        #
+        #     if file.endswith(".png"):
+        #         print file_path
+        #         print file
+        #
+        #         file = file_path +'/'+ file
+        #         archive_app_path = r'D:/'
+        #
+        #         if not os.path.isfile(archive_app_path):
+        #             compImg = Image.open(file)
+        #             # compress file at 50% of previous quality
+        #             out_dir = 'D:/compressor/test_jpg.jpg'
+        #             compImg.save(out_dir, "JPEG", quality=0)
+        #             # shutil.copy2(file_path + '/' + file, app_path_folder + '/' + document_name)
